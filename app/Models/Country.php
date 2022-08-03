@@ -14,4 +14,15 @@ class Country extends Model
     //Omitir campos de auditoria:
     public $timestamps =false;
     use HasFactory;
+
+    //Relacion entre continente y region jajajaja
+
+    public function region(){
+        return $this->belongsTo(Continent::class, 'region_id');
+     }
+
+      //Relacion m a m con paises
+    public function languages(){
+        return $this->belongsToMany(Language::class, 'country_languages' , 'country_id' , 'language_id' , );
+    }
 }
