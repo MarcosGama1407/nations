@@ -19,10 +19,10 @@ class Country extends Model
 
     public function region(){
         return $this->belongsTo(Continent::class, 'region_id');
-     }
+    }
 
       //Relacion m a m con paises
     public function languages(){
-        return $this->belongsToMany(Language::class, 'country_languages' , 'country_id' , 'language_id' , );
+        return $this->belongsToMany(Language::class, 'country_languages' , 'country_id' , 'language_id' )->withPivot('official');
     }
 }
